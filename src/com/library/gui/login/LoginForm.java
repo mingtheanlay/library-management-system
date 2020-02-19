@@ -97,6 +97,11 @@ public class LoginForm {
 		loginFrame.getContentPane().add(btnAdmin);
 		
 		JButton btnLibrarian = new JButton("Login as Librarian");
+		btnLibrarian.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+			}
+		});
 		btnLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
 		btnLibrarian.setBounds(202, 282, 164, 43);
 		loginFrame.getContentPane().add(btnLibrarian);
