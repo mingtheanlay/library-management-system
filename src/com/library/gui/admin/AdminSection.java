@@ -2,6 +2,8 @@ package com.library.gui.admin;
 
 import java.awt.EventQueue;
 
+import com.library.gui.login.*;
+
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -83,6 +85,8 @@ public class AdminSection {
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				LoginForm.main(new String[] {});
+				adminFrame.dispose();
 			}
 		});
 		
