@@ -108,7 +108,7 @@ public class AdminSection {
 		JButton btnAddLibrarian = new JButton("Add Librarian");
 		btnAddLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				addLibrarian();
 			}
 		});
 		btnAddLibrarian.setOpaque(false);
@@ -119,12 +119,14 @@ public class AdminSection {
 		btnAddLibrarian.setBackground(new Color(106, 90, 205));
 		btnAddLibrarian.setBounds(0, 152, 226, 45);
 		navPanel.add(btnAddLibrarian);
-		
-		
+				
+	}
+	
+	private void addLibrarian() {
 		JPanel addLibrarianForm = new JPanel();
 		addLibrarianForm.setBounds(226, 0, 494, 490);
 		addLibrarianForm.setLayout(null);
-		adminFrame.add(addLibrarianForm);
+		adminFrame.getContentPane().add(addLibrarianForm);
 		
 		JLabel lbName = new JLabel("Name");
 		lbName.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -212,6 +214,8 @@ public class AdminSection {
 		addLibrarianForm.add(lbAddLibrarian);
 		lbAddLibrarian.setHorizontalAlignment(SwingConstants.CENTER);
 		lbAddLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
+		
+		adminFrame.revalidate();
+		adminFrame.repaint();
 	}
-
 }
