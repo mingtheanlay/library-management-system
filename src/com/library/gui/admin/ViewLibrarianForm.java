@@ -1,29 +1,22 @@
 package com.library.gui.admin;
 
-import java.awt.EventQueue;
-
-import com.library.gui.login.*;
-
-import javax.swing.JFrame;
 import java.awt.Color;
-import java.awt.Container;
-
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
 
-public class AdminSection {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+
+import com.library.gui.login.LoginForm;
+
+public class ViewLibrarianForm {
 
 	private JFrame adminFrame;
 
@@ -34,7 +27,7 @@ public class AdminSection {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AdminSection window = new AdminSection();
+					ViewLibrarianForm window = new ViewLibrarianForm();
 					window.adminFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +39,7 @@ public class AdminSection {
 	/**
 	 * Create the application.
 	 */
-	public AdminSection() {
+	public ViewLibrarianForm() {
 		initialize();
 	}
 
@@ -54,6 +47,14 @@ public class AdminSection {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		adminFrame = new JFrame();
+		adminFrame.setBounds(100, 100, 450, 300);
+		adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		adminFrame = new JFrame();
+		adminFrame.setBounds(100, 100, 450, 300);
+		adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		adminFrame = new JFrame();
 		adminFrame.setBounds(100, 100, 720, 512);
 		adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -102,8 +103,7 @@ public class AdminSection {
 		JButton btnViewLibrarian = new JButton("View Librarian");
 		btnViewLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewLibrarianForm.main(new String[] {});
-				adminFrame.dispose();
+				viewLibrarian();
 			}
 		});
 		btnViewLibrarian.setOpaque(false);
@@ -114,8 +114,6 @@ public class AdminSection {
 		btnViewLibrarian.setBackground(new Color(106, 90, 205));
 		btnViewLibrarian.setBounds(0, 209, 226, 45);
 		navPanel.add(btnViewLibrarian);
-		
-	
 		
 		JButton btnAddLibrarian = new JButton("Add Librarian");	
 		btnAddLibrarian.addActionListener(new ActionListener() {
@@ -133,13 +131,33 @@ public class AdminSection {
 		btnAddLibrarian.setBounds(0, 152, 226, 45);
 		navPanel.add(btnAddLibrarian);
 		
-		JLabel lblNewLabel = new JLabel("Welcome");
-		lblNewLabel.setBounds(453, 73, 61, 16);
-		adminFrame.getContentPane().add(lblNewLabel);
-		
-		// **********************
-	
+		viewLibrarian();
 	}
 	
-	
+private void viewLibrarian() {
+		
+		JTable tbViewLibrarian;
+		JPanel viewLibrarian = new JPanel();
+		viewLibrarian.setBounds(226, 0, 494, 490);
+		viewLibrarian.setLayout(null);
+		
+		JLabel lbViewLibrarian = new JLabel("View Librarian");
+		lbViewLibrarian.setBounds(135, 35, 208, 28);
+		viewLibrarian.add(lbViewLibrarian);
+		lbViewLibrarian.setHorizontalAlignment(SwingConstants.CENTER);
+		lbViewLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
+		
+		JScrollPane spViewLibrarian = new JScrollPane();
+		spViewLibrarian.setBounds(6, 88, 1, 1);
+		viewLibrarian.add(spViewLibrarian);
+		
+		tbViewLibrarian = new JTable();
+		spViewLibrarian.setViewportView(tbViewLibrarian);
+		
+		
+		adminFrame.getContentPane().add(viewLibrarian);
+		adminFrame.revalidate();
+		adminFrame.repaint();
+	}
+
 }
