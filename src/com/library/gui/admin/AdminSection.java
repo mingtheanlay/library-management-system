@@ -18,10 +18,15 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AdminSection {
 
 	private JFrame adminFrame;
+	private JTable tbViewLibrarian;
 
 	/**
 	 * Launch the application.
@@ -105,12 +110,9 @@ public class AdminSection {
 		btnViewLibrarian.setBounds(0, 209, 226, 45);
 		navPanel.add(btnViewLibrarian);
 		
-		JButton btnAddLibrarian = new JButton("Add Librarian");
-		btnAddLibrarian.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				addLibrarian();
-			}
-		});
+	
+		
+		JButton btnAddLibrarian = new JButton("Add Librarian");	
 		btnAddLibrarian.setOpaque(false);
 		btnAddLibrarian.setForeground(Color.WHITE);
 		btnAddLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 20));
@@ -119,14 +121,18 @@ public class AdminSection {
 		btnAddLibrarian.setBackground(new Color(106, 90, 205));
 		btnAddLibrarian.setBounds(0, 152, 226, 45);
 		navPanel.add(btnAddLibrarian);
-				
+		
+		
+		// **********************
+	
+		
 	}
 	
 	private void addLibrarian() {
 		JPanel addLibrarianForm = new JPanel();
 		addLibrarianForm.setBounds(226, 0, 494, 490);
 		addLibrarianForm.setLayout(null);
-		adminFrame.getContentPane().add(addLibrarianForm);
+		
 		
 		JLabel lbName = new JLabel("Name");
 		lbName.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -214,6 +220,29 @@ public class AdminSection {
 		addLibrarianForm.add(lbAddLibrarian);
 		lbAddLibrarian.setHorizontalAlignment(SwingConstants.CENTER);
 		lbAddLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
+		
+		adminFrame.revalidate();
+		adminFrame.repaint();
+	}
+	
+	private void viewLibrarian() {
+		
+		JPanel viewLibrarian = new JPanel();
+		viewLibrarian.setBounds(226, 0, 494, 490);
+		viewLibrarian.setLayout(null);
+		
+		JLabel lbViewLibrarian = new JLabel("View Librarian");
+		lbViewLibrarian.setBounds(135, 35, 208, 28);
+		viewLibrarian.add(lbViewLibrarian);
+		lbViewLibrarian.setHorizontalAlignment(SwingConstants.CENTER);
+		lbViewLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
+		
+		JScrollPane spViewLibrarian = new JScrollPane();
+		spViewLibrarian.setBounds(6, 88, 1, 1);
+		viewLibrarian.add(spViewLibrarian);
+		
+		tbViewLibrarian = new JTable();
+		spViewLibrarian.setViewportView(tbViewLibrarian);
 		
 		adminFrame.revalidate();
 		adminFrame.repaint();
