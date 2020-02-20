@@ -58,6 +58,7 @@ public class AdminSection {
 		adminFrame.setBounds(100, 100, 720, 512);
 		adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		adminFrame.getContentPane().setLayout(null);
+		adminFrame.setResizable(false);
 		
 		JPanel navPanel = new JPanel();
 		navPanel.setBackground(new Color(106, 90, 205));

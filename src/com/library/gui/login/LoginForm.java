@@ -7,6 +7,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -87,8 +88,31 @@ public class LoginForm {
 		JButton btnAdmin = new JButton("Login as Admin");
 		btnAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AdminSection.main(new String[] {});
-				loginFrame.dispose();
+				String name=tfAccountName.getText();
+				String password=String.copyValueOf(passwordField.getPassword());
+				
+				//Blank
+				if(name.isBlank()) {
+					JOptionPane.showMessageDialog(null,"Please fill your account name","Login Error",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				if(password.isBlank()) {
+					JOptionPane.showMessageDialog(null,"Please fill your password","Login Error",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				//Perform login
+				
+				if(name.equals("admin")&&password.equals("admin123")){
+					AdminSection.main(new String[]{}); 
+					loginFrame.dispose();
+				}else{
+					JOptionPane.showMessageDialog(null, "Sorry, Username or Password Error","Login Error!", JOptionPane.ERROR_MESSAGE);
+					tfAccountName.setText("");
+					passwordField.setText("");
+				}	
+
 			}
 		});
 		

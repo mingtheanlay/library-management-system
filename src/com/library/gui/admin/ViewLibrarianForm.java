@@ -50,6 +50,8 @@ public class ViewLibrarianForm {
 		adminFrame = new JFrame();
 		adminFrame.setBounds(100, 100, 450, 300);
 		adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		adminFrame.getContentPane().setLayout(null);
+		adminFrame.setResizable(false);
 		
 		adminFrame = new JFrame();
 		adminFrame.setBounds(100, 100, 450, 300);
@@ -154,10 +156,7 @@ private void viewLibrarian() {
 		tbViewLibrarian = new JTable();
 		spViewLibrarian.setViewportView(tbViewLibrarian);
 		
-		
 		adminFrame.getContentPane().add(viewLibrarian);
-		adminFrame.revalidate();
-		adminFrame.repaint();
 	}
 
 }

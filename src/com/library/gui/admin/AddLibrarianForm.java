@@ -10,12 +10,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import com.library.gui.login.LoginForm;
+import com.library.admin.db.*;
+import com.library.admin.function.*;
 
 public class AddLibrarianForm {
 
@@ -49,8 +52,12 @@ public class AddLibrarianForm {
 	 */
 	private void initialize() {
 		adminFrame = new JFrame();
-		adminFrame.setBounds(100, 100, 450, 300);
+		adminFrame.setBounds(100, 100, 720, 512);
 		adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		adminFrame.getContentPane().setLayout(null);
+		adminFrame.setResizable(false);
+		
+		
 		
 		adminFrame = new JFrame();
 		adminFrame.setBounds(100, 100, 720, 512);
@@ -194,7 +201,7 @@ public class AddLibrarianForm {
 		tfAddress.setBounds(206, 223, 233, 26);
 		addLibrarianForm.add(tfAddress);
 		
-		Container tfCity = new JTextField();
+		JTextField tfCity = new JTextField();
 		tfCity.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
 		((JTextField) tfCity).setColumns(10);
 		tfCity.setBounds(206, 264, 233, 26);
@@ -214,6 +221,25 @@ public class AddLibrarianForm {
 		JButton btnSubmitLibrarian = new JButton("Add Librarian");
 		btnSubmitLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String name=tfName.getText();
+				String password=String.valueOf(tfPassword.getPassword());
+				String email=tfEmail.getText();
+				String address=tfAddress.getText();
+				String city=tfCity.getText();
+				String phone=tfPhoneNumber.getText();
+
+				int i=LibrarianDao.save(name, password, email, address, city, phone);
+				if(i>0){
+					JOptionPane.showMessageDialog(null,"Librarian added successfully!");
+					AddLibrarianForm.main(new String[] {});
+					adminFrame.dispose();
+					
+				}else{
+					JOptionPane.showMessageDialog(null,"Sorry, unable to save!");
+				}
+				
+				
+				
 				
 			}
 		});
@@ -226,9 +252,6 @@ public class AddLibrarianForm {
 		addLibrarianForm.add(lbAddLibrarian);
 		lbAddLibrarian.setHorizontalAlignment(SwingConstants.CENTER);
 		lbAddLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
-		
-		adminFrame.revalidate();
-		adminFrame.repaint();
 	}
 	
 	
