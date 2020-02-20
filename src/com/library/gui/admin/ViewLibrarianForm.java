@@ -48,19 +48,10 @@ public class ViewLibrarianForm {
 	 */
 	private void initialize() {
 		adminFrame = new JFrame();
-		adminFrame.setBounds(100, 100, 450, 300);
-		adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		adminFrame.getContentPane().setLayout(null);
-		adminFrame.setResizable(false);
-		
-		adminFrame = new JFrame();
-		adminFrame.setBounds(100, 100, 450, 300);
-		adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		adminFrame = new JFrame();
 		adminFrame.setBounds(100, 100, 720, 512);
 		adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		adminFrame.getContentPane().setLayout(null);
+		adminFrame.setResizable(false);
 		
 		JPanel navPanel = new JPanel();
 		navPanel.setBackground(new Color(106, 90, 205));
@@ -105,7 +96,8 @@ public class ViewLibrarianForm {
 		JButton btnViewLibrarian = new JButton("View Librarian");
 		btnViewLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				viewLibrarian();
+				ViewLibrarianForm.main(new String[] {});
+				adminFrame.dispose();
 			}
 		});
 		btnViewLibrarian.setOpaque(false);
@@ -116,6 +108,8 @@ public class ViewLibrarianForm {
 		btnViewLibrarian.setBackground(new Color(106, 90, 205));
 		btnViewLibrarian.setBounds(0, 209, 226, 45);
 		navPanel.add(btnViewLibrarian);
+		
+	
 		
 		JButton btnAddLibrarian = new JButton("Add Librarian");	
 		btnAddLibrarian.addActionListener(new ActionListener() {
