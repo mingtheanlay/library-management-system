@@ -6,7 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.regex.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -223,7 +223,67 @@ public class AddLibrarianForm {
 				String address=tfAddress.getText();
 				String city=tfCity.getText();
 				String phone=tfPhoneNumber.getText();
+				
+				//Check null
+				if(name.isBlank()) {
+					JOptionPane.showMessageDialog(null,"Please fill your account name","Login Error",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				if(password.isBlank()) {
+					JOptionPane.showMessageDialog(null,"Please fill your password","Login Error",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				if(email.isBlank()) {
+					JOptionPane.showMessageDialog(null,"Please fill your account Email","Login Error",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				if(address.isBlank()) {
+					JOptionPane.showMessageDialog(null,"Please fill your Address","Login Error",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				if(city.isBlank()) {
+					JOptionPane.showMessageDialog(null,"Please fill your city","Login Error",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				if(phone.isBlank()) {
+					JOptionPane.showMessageDialog(null,"Please fill your phone","Login Error",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				
+				
+				
+				
+				
+				//Email Validation
+				String emailRegrex="^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+				Pattern emailpat=Pattern.compile(emailRegrex,Pattern.CASE_INSENSITIVE);
+				Matcher matcher_email=emailpat.matcher(email);
+				if(matcher_email.matches()==false) {
+					JOptionPane.showMessageDialog(null,"Please fill correct email format","Login Error",JOptionPane.ERROR_MESSAGE);
+					tfEmail.setText("");
+					return;
+				}
+				
+				//Phone Validation
 
+				String phoneRegrex="^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{3,4})$";
+				Pattern phonepat=Pattern.compile(phoneRegrex);
+				Matcher matcher_phone=phonepat.matcher(phone);
+				System.out.println(matcher_phone.matches());
+				if(matcher_phone.matches()==false) {
+					tfPhoneNumber.setText("");
+					JOptionPane.showMessageDialog(null,"Please fill correct phone format","Login Error",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				
+				//Save to database
 				int i=LibrarianDao.save(name, password, email, address, city, phone);
 				if(i>0){
 					JOptionPane.showMessageDialog(null,"Librarian added successfully!");
