@@ -74,6 +74,8 @@ public class AddLibrarianForm {
 		btnRemoveLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 20));
 		btnRemoveLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				RemoveLibrarianForm.main(new String[] {});
+				adminFrame.dispose();
 			}
 		});
 		btnRemoveLibrarian.setBounds(0, 267, 226, 45);
@@ -255,11 +257,6 @@ public class AddLibrarianForm {
 					return;
 				}
 				
-				
-				
-				
-				
-				
 				//Email Validation
 				String emailRegrex="^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
 				Pattern emailpat=Pattern.compile(emailRegrex,Pattern.CASE_INSENSITIVE);
@@ -293,10 +290,6 @@ public class AddLibrarianForm {
 				}else{
 					JOptionPane.showMessageDialog(null,"Sorry, unable to save!");
 				}
-				
-				
-				
-				
 			}
 		});
 		btnSubmitLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));

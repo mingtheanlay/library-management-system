@@ -70,6 +70,8 @@ public class ViewLibrarianForm {
 		btnRemoveLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 20));
 		btnRemoveLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				RemoveLibrarianForm.main(new String[] {});
+				adminFrame.dispose();
 			}
 		});
 		btnRemoveLibrarian.setBounds(0, 267, 226, 45);

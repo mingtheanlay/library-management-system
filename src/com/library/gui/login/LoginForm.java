@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import com.library.gui.admin.*;
+import com.library.librarian.gui.*;
 
 public class LoginForm {
 
@@ -123,7 +124,8 @@ public class LoginForm {
 		JButton btnLibrarian = new JButton("Login as Librarian");
 		btnLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				LibrarianSection.main(new String[] {});
+				loginFrame.dispose();
 			}
 		});
 		btnLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));

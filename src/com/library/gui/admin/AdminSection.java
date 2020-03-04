@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
-
+import com.library.admin.db.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
@@ -77,9 +77,11 @@ public class AdminSection {
 		btnRemoveLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 20));
 		btnRemoveLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				RemoveLibrarianForm.main(new String[] {});
+				adminFrame.dispose();
 			}
 		});
-		btnRemoveLibrarian.setBounds(0, 267, 226, 45);
+		btnRemoveLibrarian.setBounds(-2, 267, 226, 45);
 		navPanel.add(btnRemoveLibrarian);
 		btnRemoveLibrarian.setForeground(new Color(255, 255, 255));
 		btnRemoveLibrarian.setBackground(new Color(106, 90, 205));
@@ -113,7 +115,7 @@ public class AdminSection {
 		btnViewLibrarian.setContentAreaFilled(false);
 		btnViewLibrarian.setBorderPainted(false);
 		btnViewLibrarian.setBackground(new Color(106, 90, 205));
-		btnViewLibrarian.setBounds(0, 209, 226, 45);
+		btnViewLibrarian.setBounds(-2, 209, 226, 45);
 		navPanel.add(btnViewLibrarian);
 		
 	
@@ -131,7 +133,7 @@ public class AdminSection {
 		btnAddLibrarian.setContentAreaFilled(false);
 		btnAddLibrarian.setBorderPainted(false);
 		btnAddLibrarian.setBackground(new Color(106, 90, 205));
-		btnAddLibrarian.setBounds(0, 152, 226, 45);
+		btnAddLibrarian.setBounds(-2, 152, 226, 45);
 		navPanel.add(btnAddLibrarian);
 		
 		JLabel lblNewLabel = new JLabel("Welcome");
