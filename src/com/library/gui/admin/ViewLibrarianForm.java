@@ -21,7 +21,6 @@ public class ViewLibrarianForm {
 
 	private JFrame adminFrame;
 
-
 	/**
 	 * Launch the application.
 	 */
@@ -130,26 +129,39 @@ public class ViewLibrarianForm {
 		btnAddLibrarian.setBackground(new Color(106, 90, 205));
 		btnAddLibrarian.setBounds(0, 152, 226, 45);
 		navPanel.add(btnAddLibrarian);
+            
+                
+               	JLabel lblIssueBook = new JLabel("Issue Books");
+		lblIssueBook.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIssueBook.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
+		lblIssueBook.setBounds(367, 24, 208, 38);
+		adminFrame.getContentPane().add(lblIssueBook);
 		
-		JTable tbViewLibrarian;
-		JPanel viewLibrarian = new JPanel();
-		viewLibrarian.setBounds(226, 0, 494, 490);
-		viewLibrarian.setLayout(null);
+                 String[][] data = { 
+	            { "1","Thean", "123", "admin@admin.com","PP", "PP", "0964361840"}, 
+	            { "1","Thean", "123", "admin@admin.com","PP", "PP", "0964361840" } 
+	        }; 
+	  
+	       
+	        String[] columnNames = { "ID", "Name", "Password","Email", "Address", "City", "Contact" }; 
+	        
+		JTable tbViewLibrarian = new JTable(data,columnNames);
+		tbViewLibrarian.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		tbViewLibrarian.setBounds(248, 94, 448, 370);
+		adminFrame.getContentPane().add(tbViewLibrarian);
 		
-		JLabel lbViewLibrarian = new JLabel("View Librarian");
-		lbViewLibrarian.setBounds(135, 35, 208, 28);
-		viewLibrarian.add(lbViewLibrarian);
-		lbViewLibrarian.setHorizontalAlignment(SwingConstants.CENTER);
-		lbViewLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
-		
-		JScrollPane spViewLibrarian = new JScrollPane();
-		spViewLibrarian.setBounds(6, 88, 1, 1);
-		viewLibrarian.add(spViewLibrarian);
-		
-		tbViewLibrarian = new JTable();
-		spViewLibrarian.setViewportView(tbViewLibrarian);
-		
-		adminFrame.getContentPane().add(viewLibrarian);
-	}
-	
+		JScrollPane sp = new JScrollPane(tbViewLibrarian);
+		sp.setBounds(232, 95, 482, 369);
+		adminFrame.getContentPane().add(sp);
+                
+                tbViewLibrarian.setRowHeight(30);
+                tbViewLibrarian.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+                tbViewLibrarian.getColumnModel().getColumn(0).setPreferredWidth(27);  
+                tbViewLibrarian.getColumnModel().getColumn(1).setPreferredWidth(50);
+                tbViewLibrarian.getColumnModel().getColumn(2).setPreferredWidth(80);
+                tbViewLibrarian.getColumnModel().getColumn(3).setPreferredWidth(120);
+                tbViewLibrarian.getColumnModel().getColumn(4).setPreferredWidth(70);   
+                tbViewLibrarian.getColumnModel().getColumn(5).setPreferredWidth(50);  
+                tbViewLibrarian.getColumnModel().getColumn(6).setPreferredWidth(100);
+        }
 }

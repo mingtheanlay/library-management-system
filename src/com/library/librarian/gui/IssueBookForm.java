@@ -22,10 +22,10 @@ import javax.swing.JTextField;
 public class IssueBookForm {
 
 	private JFrame librarianForm;
-	private JTextField ISBN;
+	private JTextField tfISBN;
 	private JTextField tfStudentID;
 	private JTextField tfStudentName;
-	private JTextField textField_3;
+	private JTextField tfStudentContact;
 
 	/**
 	 * Launch the application.
@@ -182,11 +182,11 @@ public class IssueBookForm {
 		lblISBN.setBounds(283, 133, 123, 16);
 		librarianForm.getContentPane().add(lblISBN);
 		
-		ISBN = new JTextField();
-		ISBN.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
-		ISBN.setColumns(10);
-		ISBN.setBounds(448, 129, 252, 26);
-		librarianForm.getContentPane().add(ISBN);
+		tfISBN = new JTextField();
+		tfISBN.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
+		tfISBN.setColumns(10);
+		tfISBN.setBounds(448, 129, 252, 26);
+		librarianForm.getContentPane().add(tfISBN);
 		
 		JLabel lblStudentID = new JLabel("Student's ID");
 		lblStudentID.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
@@ -215,11 +215,11 @@ public class IssueBookForm {
 		lblContact.setBounds(283, 280, 148, 16);
 		librarianForm.getContentPane().add(lblContact);
 		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
-		textField_3.setColumns(10);
-		textField_3.setBounds(448, 276, 252, 26);
-		librarianForm.getContentPane().add(textField_3);
+		tfStudentContact = new JTextField();
+		tfStudentContact.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
+		tfStudentContact.setColumns(10);
+		tfStudentContact.setBounds(448, 276, 252, 26);
+		librarianForm.getContentPane().add(tfStudentContact);
 		
 		JLabel lblIssueBook = new JLabel("Issue Books");
 		lblIssueBook.setHorizontalAlignment(SwingConstants.CENTER);
