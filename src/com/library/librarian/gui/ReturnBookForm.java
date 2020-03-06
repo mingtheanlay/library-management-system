@@ -213,8 +213,6 @@ public class ReturnBookForm {
 		btnReset.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
 		btnReset.setBounds(505, 267, 94, 36);
 		librarianForm.getContentPane().add(btnReset);
-		
-		// **********************
 	
 	}
 }

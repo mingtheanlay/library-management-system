@@ -237,7 +237,6 @@ public class IssueBookForm {
 		btnSubmit.setBounds(363, 358, 94, 36);
 		librarianForm.getContentPane().add(btnSubmit);
 		
-		// **********************
 	
 	}
 }

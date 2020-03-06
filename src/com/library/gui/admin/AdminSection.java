@@ -134,8 +134,6 @@ public class AdminSection {
 		JLabel lblNewLabel = new JLabel("Welcome");
 		lblNewLabel.setBounds(453, 73, 61, 16);
 		adminFrame.getContentPane().add(lblNewLabel);
-		
-		// **********************
 	
 	}
 	

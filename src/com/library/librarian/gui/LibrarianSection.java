@@ -176,8 +176,6 @@ public class LibrarianSection {
 		JLabel lblNewLabel = new JLabel("Welcome");
 		lblNewLabel.setBounds(453, 73, 61, 16);
 		librarianForm.getContentPane().add(lblNewLabel);
-		
-		// **********************
 	
 	}
 }

@@ -302,6 +302,4 @@ public class AddLibrarianForm {
 		lbAddLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
 	}
 	
-	
-
 }
