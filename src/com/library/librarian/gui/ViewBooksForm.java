@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 
 public class ViewBooksForm {
@@ -174,22 +175,31 @@ public class ViewBooksForm {
 		btnLogout.setBounds(59, 406, 104, 45);
 		navPanel.add(btnLogout);
 		
-		JPanel viewBooksPanel = new JPanel();
-		viewBooksPanel.setLayout(null);
-		viewBooksPanel.setBounds(226, 0, 494, 490);
-		librarianForm.getContentPane().add(viewBooksPanel);
 		
-		JLabel lblViewBooks = new JLabel("View Books");
-		lblViewBooks.setHorizontalAlignment(SwingConstants.CENTER);
-		lblViewBooks.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
-		lblViewBooks.setBounds(108, 35, 269, 28);
-		viewBooksPanel.add(lblViewBooks);
+		JLabel lblIssueBook = new JLabel("View Books");
+		lblIssueBook.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIssueBook.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
+		lblIssueBook.setBounds(367, 24, 208, 38);
+		librarianForm.getContentPane().add(lblIssueBook);
+
+
+	        String[][] data = { 
+	            { "1","Harry Potter", "J.k Rowling", "null", "First","100"}, 
+	            { "2","Doctor Sleep", "Stephen King", "null", "First","50"} 
+	        }; 
+	  
+	        String[] columnNames = { "ISBN", "Title", "Author","Publisher","Edition","Quantity"}; 
+	        
+		JTable tbViewBooks = new JTable(data,columnNames);
+		tbViewBooks.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		tbViewBooks.setBounds(248, 94, 448, 370);
+		librarianForm.getContentPane().add(tbViewBooks);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(6, 88, 1, 1);
-		viewBooksPanel.add(scrollPane);
-		
-		// **********************
+		JScrollPane sp = new JScrollPane(tbViewBooks);
+		sp.setBounds(232, 95, 482, 369);
+		librarianForm.getContentPane().add(sp);
+                
+                tbViewBooks.setRowHeight(30);
 	
 	}
 }

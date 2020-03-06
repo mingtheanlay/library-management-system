@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 
 public class ViewIssuedBooksForm {
@@ -117,7 +118,6 @@ public class ViewIssuedBooksForm {
 		navPanel.add(btnaViewBooks);
 		btnaViewBooks.setForeground(new Color(255, 255, 255));
 		btnaViewBooks.setBackground(new Color(106, 90, 205));
-		
 			btnaViewBooks.setOpaque(false);
 			btnaViewBooks.setContentAreaFilled(false);
 			btnaViewBooks.setBorderPainted(false);
@@ -174,22 +174,30 @@ public class ViewIssuedBooksForm {
 		btnLogout.setBounds(59, 406, 104, 45);
 		navPanel.add(btnLogout);
 		
-		JPanel viewIssueBookPanel = new JPanel();
-		viewIssueBookPanel.setLayout(null);
-		viewIssueBookPanel.setBounds(226, 0, 494, 490);
-		librarianForm.getContentPane().add(viewIssueBookPanel);
+		JLabel lblIssueBook = new JLabel("Issue Books");
+		lblIssueBook.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIssueBook.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
+		lblIssueBook.setBounds(367, 24, 208, 38);
+		librarianForm.getContentPane().add(lblIssueBook);
 		
-		JLabel lblViewIssuedBooks = new JLabel("View Issued Books");
-		lblViewIssuedBooks.setHorizontalAlignment(SwingConstants.CENTER);
-		lblViewIssuedBooks.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
-		lblViewIssuedBooks.setBounds(108, 35, 269, 28);
-		viewIssueBookPanel.add(lblViewIssuedBooks);
+                 String[][] data = { 
+	            { "1","1", "Stain", "admin@admin.com"}, 
+	            { "2","99", "Thean", "admin@admin.com"} 
+	        }; 
+	  
+	       
+	        String[] columnNames = { "ISBN", "Student's ID", "Student's Name","Student's Contact",}; 
+	        
+		JTable tbViewIssuedBooks = new JTable(data,columnNames);
+		tbViewIssuedBooks.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		tbViewIssuedBooks.setBounds(248, 94, 448, 370);
+		librarianForm.getContentPane().add(tbViewIssuedBooks);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(6, 88, 1, 1);
-		viewIssueBookPanel.add(scrollPane);
-		
-		// **********************
+		JScrollPane sp = new JScrollPane(tbViewIssuedBooks);
+		sp.setBounds(232, 95, 482, 369);
+		librarianForm.getContentPane().add(sp);
+                
+                tbViewIssuedBooks.setRowHeight(30);
 	
 	}
 }
