@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 
 
 import com.library.gui.login.LoginForm;
-
+import com.library.admin.db.*;
 public class ViewLibrarianForm {
 
 	private JFrame adminFrame;
@@ -137,15 +137,11 @@ public class ViewLibrarianForm {
 		lblIssueBook.setBounds(367, 24, 208, 38);
 		adminFrame.getContentPane().add(lblIssueBook);
 		
-                 String[][] data = { 
-	            { "1","Thean", "123", "admin@admin.com","PP", "PP", "0964361840"}, 
-	            { "1","Thean", "123", "admin@admin.com","PP", "PP", "0964361840" } 
-	        }; 
-	  
+ 
 	       
-	        String[] columnNames = { "ID", "Name", "Password","Email", "Address", "City", "Contact" }; 
-	        
-		JTable tbViewLibrarian = new JTable(data,columnNames);
+	       String[] columnNames = { "ID", "Name", "Password","Email", "Address", "City", "Contact" }; 
+	      
+		JTable tbViewLibrarian = new JTable(ViewLibrarian.view(),columnNames);
 		tbViewLibrarian.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		tbViewLibrarian.setBounds(248, 94, 448, 370);
 		adminFrame.getContentPane().add(tbViewLibrarian);

@@ -278,9 +278,23 @@ public class AddLibrarianForm {
 					return;
 				}
 				
+				//Hashing password 
+				
+				String salt=BCrypt.gensalt();
+				String computed_hash = BCrypt.hashpw(password, salt);
+				System.out.println("Test computed hash: " + computed_hash);
+				
+				//Compare hashing to use in Librarian login
+			/*	String compare_test = BCrypt.checkpw("123456",computed_hash)
+					? "Passwords Match" : "Passwords do not match";
+				System.out.println("Verify against stored hash:   " + compare_test);
+			*/	
+				
+				
+				
 				
 				//Save to database
-				int i=LibrarianDao.save(name, password, email, address, city, phone);
+				int i=LibrarianDao.save(name,computed_hash, email, address, city, phone);
 				if(i>0){
 					JOptionPane.showMessageDialog(null,"Librarian added successfully!");
 					AddLibrarianForm.main(new String[] {});

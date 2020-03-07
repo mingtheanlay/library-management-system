@@ -9,12 +9,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.library.gui.login.LoginForm;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
-
+import com.library.admin.db.*;
 public class RemoveLibrarianForm {
 
 	private JFrame adminFrame;
@@ -141,6 +142,19 @@ public class RemoveLibrarianForm {
 		JButton btnSubmitRemove = new JButton("Remove");
 		btnSubmitRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String sid=textField.getText();
+				if(sid==null||sid.trim().equals("")){
+					JOptionPane.showMessageDialog(null,"Id can't be blank");
+				}else{
+					int id=Integer.parseInt(sid);
+					int i=LibrarianDao.delete(id);
+					if(i>0){
+						JOptionPane.showMessageDialog(null,"Record deleted successfully!");
+					}else{
+						JOptionPane.showMessageDialog(null,"Unable to delete given id!");
+						textField.setText("");
+					}
+				}
 			}
 		});
 		btnSubmitRemove.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
