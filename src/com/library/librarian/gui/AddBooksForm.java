@@ -12,13 +12,15 @@ import javax.swing.JPanel;
 
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
-
+import com.library.admin.db.*;
 
 public class AddBooksForm {
 
@@ -52,7 +54,14 @@ public class AddBooksForm {
 	public AddBooksForm() {
 		initialize();
 	}
-
+	private void clearField() {
+		tfISBN.setText("");
+		tfTitle.setText("");
+		tfAuthor.setText("");
+		tfPublisher.setText("");
+		tfEdition.setText("");
+		tfQuantity.setText("");
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -180,7 +189,36 @@ public class AddBooksForm {
 		btnLogout.setBounds(59, 406, 104, 45);
 		navPanel.add(btnLogout);
 		
+		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
+		btnSubmit.setBounds(353, 408, 94, 36);
+		librarianForm.getContentPane().add(btnSubmit);
 		
+		btnSubmit.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			String id=tfISBN.getText();
+			String title=tfTitle.getText();
+			String author=tfAuthor.getText();
+			String publisher=tfPublisher.getText();
+			String sedition=tfEdition.getText();
+			String squantity=tfQuantity.getText();
+			int quantity=Integer.parseInt(squantity);
+			int edition=Integer.parseInt(sedition);
+			int i=BookDao.save(id,title, author, publisher,edition,quantity);
+			if(i>0){
+				JOptionPane.showMessageDialog(null,"Books added successfully!");
+				clearField();
+				//LibrarianSuccess.main(new String[]{});
+				//frame.dispose();
+			
+				
+			}else{
+				JOptionPane.showMessageDialog(null,"Sorry, unable to save!");
+			}
+				
+				
+	}});
+	
 		// **********************
 		
 		JLabel lbdAddBooks = new JLabel("Add Books");
@@ -255,14 +293,21 @@ public class AddBooksForm {
 		tfQuantity.setBounds(429, 344, 252, 26);
 		librarianForm.getContentPane().add(tfQuantity);
 		
-		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
-		btnSubmit.setBounds(353, 408, 94, 36);
-		librarianForm.getContentPane().add(btnSubmit);
+		
 		
 		JButton btnReset = new JButton("Reset");
 		btnReset.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
 		btnReset.setBounds(472, 408, 94, 36);
 		librarianForm.getContentPane().add(btnReset);
+		btnReset.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clearField();
+				
+			}
+			
+		});
 	}
+
+	
 }

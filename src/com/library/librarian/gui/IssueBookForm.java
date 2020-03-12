@@ -7,13 +7,13 @@ import com.library.gui.login.*;
 import javax.swing.JFrame;
 import java.awt.Color;
 
-
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
-
+import com.library.admin.db.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
@@ -49,7 +49,13 @@ public class IssueBookForm {
 	public IssueBookForm() {
 		initialize();
 	}
-
+	public void clearField() {
+		tfISBN.setText("");
+		tfStudentID.setText("");
+		tfStudentName.setText("");
+		tfStudentContact.setText("");
+		
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -232,10 +238,49 @@ public class IssueBookForm {
 		btnReset.setBounds(482, 358, 94, 36);
 		librarianForm.getContentPane().add(btnReset);
 		
+		btnReset.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				clearField();
+				
+				
+				
+			}
+			
+		});
+		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
 		btnSubmit.setBounds(363, 358, 94, 36);
 		librarianForm.getContentPane().add(btnSubmit);
+		btnSubmit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String bookId=tfISBN.getText();
+				String id=tfStudentID.getText();
+				String name= tfStudentName.getText();
+				String contact=tfStudentContact.getText();
+				int studentid=Integer.parseInt(id);
+				if(IssueBookDao.checkBook(bookId)){
+					
+					int i=IssueBookDao.save(bookId,studentid, name,contact);
+					if(i>0){
+						JOptionPane.showMessageDialog(null,"Book issued successfully!");
+						clearField();
+						
+					}else{
+						JOptionPane.showMessageDialog(null,"Sorry, unable to issue!");
+					}//end of save if-else
+					
+					}else{
+						JOptionPane.showMessageDialog(null,"Sorry, Callno doesn't exist!");
+					}//end of checkbook if-else
+					
+					}
+				
+			});
 		
 	
 	}

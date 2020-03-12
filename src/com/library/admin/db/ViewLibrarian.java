@@ -110,7 +110,6 @@ public class ViewLibrarian extends JFrame {
 		return null;
 			
 		
-		
 	}
 
 }

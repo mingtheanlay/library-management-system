@@ -137,9 +137,7 @@ public class ViewLibrarianForm {
 		lblIssueBook.setBounds(367, 24, 208, 38);
 		adminFrame.getContentPane().add(lblIssueBook);
 		
- 
-	       
-	       String[] columnNames = { "ID", "Name", "Password","Email", "Address", "City", "Contact" }; 
+	    String[] columnNames = { "ID", "Name", "Password","Email", "Address", "City", "Contact" }; 
 	      
 		JTable tbViewLibrarian = new JTable(ViewLibrarian.view(),columnNames);
 		tbViewLibrarian.setFont(new Font("Tahoma", Font.PLAIN, 11));

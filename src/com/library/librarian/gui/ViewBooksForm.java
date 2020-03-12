@@ -2,6 +2,7 @@ package com.library.librarian.gui;
 
 import java.awt.EventQueue;
 
+import com.library.admin.db.ViewBooks;
 import com.library.gui.login.*;
 
 import javax.swing.JFrame;
@@ -182,7 +183,6 @@ public class ViewBooksForm {
 		lblIssueBook.setBounds(367, 24, 208, 38);
 		librarianForm.getContentPane().add(lblIssueBook);
 
-
 	        String[][] data = { 
 	            { "1","Harry Potter", "J.k Rowling", "null", "First","100"}, 
 	            { "2","Doctor Sleep", "Stephen King", "null", "First","50"} 
@@ -190,7 +190,7 @@ public class ViewBooksForm {
 	  
 	        String[] columnNames = { "ISBN", "Title", "Author","Publisher","Edition","Quantity"}; 
 	        
-		JTable tbViewBooks = new JTable(data,columnNames);
+		JTable tbViewBooks = new JTable(ViewBooks.ViewBooks(),columnNames);
 		tbViewBooks.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		tbViewBooks.setBounds(248, 94, 448, 370);
 		librarianForm.getContentPane().add(tbViewBooks);
@@ -198,8 +198,7 @@ public class ViewBooksForm {
 		JScrollPane sp = new JScrollPane(tbViewBooks);
 		sp.setBounds(232, 95, 482, 369);
 		librarianForm.getContentPane().add(sp);
-                
                 tbViewBooks.setRowHeight(30);
-	
+             
 	}
 }
