@@ -12,13 +12,15 @@ import javax.swing.JPanel;
 
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
-
+import com.library.admin.db.*;
 
 public class ReturnBookForm {
 
@@ -45,10 +47,20 @@ public class ReturnBookForm {
 	/**
 	 * Create the application.
 	 */
+	
+	
 	public ReturnBookForm() {
 		initialize();
 	}
 
+	public void clearField() {
+		tfLSBN.setText("");
+		tfStudentID.setText("");
+	
+	}	
+	
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -172,6 +184,7 @@ public class ReturnBookForm {
 			}
 		});
 		
+		
 		btnLogout.setFont(new Font("Roboto Mono", Font.PLAIN, 16));
 		btnLogout.setBounds(59, 406, 104, 45);
 		navPanel.add(btnLogout);
@@ -209,7 +222,30 @@ public class ReturnBookForm {
 		btnSubmit.setBounds(374, 267, 123, 36);
 		librarianForm.getContentPane().add(btnSubmit);
 		
+		btnSubmit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String bookcallno=tfLSBN.getText();
+				int studentid=Integer.parseInt(tfStudentID.getText());
+				int i=ReturnBookDao.delete(bookcallno, studentid);
+				if(i>0){
+					JOptionPane.showMessageDialog(null,"Book returned successfully!");
+					
+				}else{
+					JOptionPane.showMessageDialog(null,"Sorry, unable to return book!");
+				}
+				
+			}
+		});
+		
+		
 		JButton btnReset = new JButton("Reset");
+		btnReset.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clearField();
+			}
+		});
 		btnReset.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));
 		btnReset.setBounds(505, 267, 94, 36);
 		librarianForm.getContentPane().add(btnReset);

@@ -1,4 +1,5 @@
 package com.library.gui.login;
+import java.sql.*;
 
 import java.awt.Color;
 
@@ -17,7 +18,10 @@ import java.awt.event.ActionEvent;
 
 import com.library.gui.admin.*;
 import com.library.librarian.gui.*;
-
+import com.library.admin.*;
+import com.library.admin.db.DB;
+import com.library.admin.db.LibrarianDao;
+import com.library.admin.db.ViewLibrarian;
 public class LoginForm {
 
 	private JFrame loginFrame;
@@ -126,8 +130,45 @@ public class LoginForm {
 		JButton btnLibrarian = new JButton("Login as Librarian");
 		btnLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LibrarianSection.main(new String[] {});
-				loginFrame.dispose();
+				//LibrarianDao.validate(tfAccountName.getText(), password)
+				
+			try {
+				//compare account
+				Connection con=DB.getConnection();
+				//PreparedStatement ps=con.prepareStatement("select * from librarian");
+				// if you only need a few columns, specify them by name instead of using "*"
+			      String query = "SELECT * FROM librarian";
+
+			      // create the java statement
+			      Statement st = con.createStatement();
+			      // execute the query, and get a java resultset
+			     ResultSet rs = st.executeQuery(query);
+			     char[] password1=passwordField.getPassword();
+			     String password=String.valueOf(password1);
+			      while (rs.next()) {
+						String name = rs.getString("name");
+				    	String password_hash=rs.getString("password");
+				    	 if(tfAccountName.getText().equals(name)) {
+				    		 boolean compare_test = BCrypt.checkpw(password,password_hash);
+				    		 if(compare_test==false) {
+				    			  JOptionPane.showMessageDialog(null, "Passwords do not match", "Login error", JOptionPane.ERROR_MESSAGE);
+				    			  return; 
+				    		 }
+
+				    	LibrarianSection.main(new String[] {});
+						loginFrame.dispose();	 
+						return;
+					} 	
+			
+			      }
+			  	JOptionPane.showMessageDialog(null, "User do not match", "Login error", JOptionPane.ERROR_MESSAGE);
+				return;
+				
+			}
+			catch(Exception e1) {
+			System.err.println(e1);
+			}
+				
 			}
 		});
 		btnLibrarian.setFont(new Font("Roboto Condensed", Font.PLAIN, 18));

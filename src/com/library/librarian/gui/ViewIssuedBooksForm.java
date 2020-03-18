@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
+import com.library.admin.db.*;
 
 public class ViewIssuedBooksForm {
 
@@ -179,16 +179,11 @@ public class ViewIssuedBooksForm {
 		lblIssueBook.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
 		lblIssueBook.setBounds(367, 24, 208, 38);
 		librarianForm.getContentPane().add(lblIssueBook);
-		
-                 String[][] data = { 
-	            { "1","1", "Stain", "admin@admin.com"}, 
-	            { "2","99", "Thean", "admin@admin.com"} 
-	        }; 
 	  
 	       
-	        String[] columnNames = { "ISBN", "Student's ID", "Student's Name","Student's Contact",}; 
+	     String[] columnNames = { "ISBN", "Student's ID", "Student's Name","Student's Contact",}; 
 	        
-		JTable tbViewIssuedBooks = new JTable(data,columnNames);
+		JTable tbViewIssuedBooks = new JTable(ViewIssuedBooks.ViewIssuedBook(),columnNames);
 		tbViewIssuedBooks.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		tbViewIssuedBooks.setBounds(248, 94, 448, 370);
 		librarianForm.getContentPane().add(tbViewIssuedBooks);

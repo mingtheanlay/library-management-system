@@ -188,7 +188,7 @@ public class ViewBooksForm {
 	            { "2","Doctor Sleep", "Stephen King", "null", "First","50"} 
 	        }; 
 	  
-	        String[] columnNames = { "ISBN", "Title", "Author","Publisher","Edition","Quantity"}; 
+	        String[] columnNames = { "ISBN", "Title", "Author","Publisher","Quantity","Edition"}; 
 	        
 		JTable tbViewBooks = new JTable(ViewBooks.ViewBooks(),columnNames);
 		tbViewBooks.setFont(new Font("Tahoma", Font.PLAIN, 12));

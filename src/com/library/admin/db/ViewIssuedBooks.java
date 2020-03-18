@@ -1,4 +1,4 @@
-package com.library.admin.db;
+package com.library.admin.db; 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.sql.Connection;
@@ -11,8 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
-
-public class ViewBooks extends JFrame {
+import com.library.admin.db.*;
+public class ViewIssuedBooks extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -21,7 +21,7 @@ public class ViewBooks extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewBooks frame = new ViewBooks();
+					ViewIssuedBooks frame = new ViewIssuedBooks();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class ViewBooks extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ViewBooks() {
+	public ViewIssuedBooks() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -45,7 +45,41 @@ public class ViewBooks extends JFrame {
 		String column[]=null;
 		try{
 			Connection con=DB.getConnection();
-			PreparedStatement ps=con.prepareStatement("select * from books",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			PreparedStatement ps=con.prepareStatement("select * from issuebooks",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			ResultSet rs=ps.executeQuery();
+			
+			ResultSetMetaData rsmd=rs.getMetaData();
+			int cols=rsmd.getColumnCount();
+			column=new String[cols];
+			for(int i=1;i<=cols;i++){
+				column[i-1]=rsmd.getColumnName(i);
+			}
+			
+			rs.last();
+			int rows=rs.getRow();
+			rs.beforeFirst();
+
+			data=new String[rows][cols];
+			int count=0;
+			while(rs.next()){
+				for(int i=1;i<=cols;i++){
+					data[count][i-1]=rs.getString(i);
+				}
+				count++;
+			}
+			con.close();
+		}catch(Exception e){System.out.println(e);}
+	}
+	
+	
+		public static String[][] ViewIssuedBook() {
+
+		
+		String data[][]=null;
+		String column[]=null;
+		try{
+			Connection con=DB.getConnection();
+			PreparedStatement ps=con.prepareStatement("select * from issuebooks",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 			ResultSet rs=ps.executeQuery();
 			
 			ResultSetMetaData rsmd=rs.getMetaData();
@@ -68,49 +102,10 @@ public class ViewBooks extends JFrame {
 				count++;
 			}
 			con.close();
-		}catch(Exception e){System.out.println(e);}
-		
-		table = new JTable(data,column);
-		JScrollPane sp=new JScrollPane(table);
-		
-		contentPane.add(sp, BorderLayout.CENTER);
-	}
-	
-	
-	
-	public static String [][] ViewBooks() {
-	
-		
-		String data[][]=null;
-		String column[]=null;
-		try{
-			Connection con=DB.getConnection();
-			PreparedStatement ps=con.prepareStatement("select * from books",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			ResultSet rs=ps.executeQuery();
-			
-			ResultSetMetaData rsmd=rs.getMetaData();
-			int cols=rsmd.getColumnCount();
-			column=new String[cols];
-			for(int i=1;i<=cols;i++){
-				column[i-1]=rsmd.getColumnName(i);
-			}
-			
-			rs.last();
-			int rows=rs.getRow();
-			rs.beforeFirst();
-
-			data=new String[rows][cols];
-			int count=0;
-			while(rs.next()){
-				for(int i=2;i<cols;i++){
-					data[count][i-2]=rs.getString(i);
-				}
-				count++;
-			}
-			con.close();
-			return data;  //return data to ViewLibrarianForm
+			return data;
 		}catch(Exception e){System.out.println(e);}
 		return null;
+		
+	}
 
-}
 }
