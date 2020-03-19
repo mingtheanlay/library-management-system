@@ -6,16 +6,24 @@ import com.library.gui.login.*;
 
 import javax.swing.JFrame;
 import java.awt.Color;
-
+import java.awt.Desktop;
 
 import javax.swing.JPanel;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
 public class AdminSection {
@@ -130,12 +138,42 @@ public class AdminSection {
 		btnAddLibrarian.setBackground(new Color(106, 90, 205));
 		btnAddLibrarian.setBounds(-2, 152, 226, 45);
 		navPanel.add(btnAddLibrarian);
-		
-		JLabel lblNewLabel = new JLabel("Welcome");
-		lblNewLabel.setBounds(453, 73, 61, 16);
+		String html=new String("<html><body><h2>Welcome</h2></body></html>");
+		JLabel lblNewLabel = new JLabel(html);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(322, 29, 267, 150);
 		adminFrame.getContentPane().add(lblNewLabel);
+		
+		JButton btn1=new JButton();
+		ImageIcon icon=new ImageIcon("/Users/chinyongchhe/Downloads/iconfinder_Github_1298743.png");
+		Image img=icon.getImage();
+		Image imgScale=img.getScaledInstance(30,30, Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon=new ImageIcon(imgScale);
+		btn1.setIcon(scaledIcon);
+		btn1.setBounds(664, 434, 30, 30);
+		adminFrame.getContentPane().add(btn1);
+		
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//File html=new File("<html><body><a href=\"https://www.javatpoint.com/\" target=\"_blank\"> this-link </a></body></html>");
+                try {
+    				URI uri = new URI("https://github.com/mingtheanlay/library-management-system");
+                	java.awt.Desktop.getDesktop().browse(uri);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (URISyntaxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				
+			}
+		});
+
+		
+		
 	
+		
 	}
-	
-	
 }
