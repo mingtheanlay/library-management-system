@@ -18,3 +18,5 @@ You can learn more about:
 - [MySQL](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjo5cKpk7jqAhXKIqYKHbH8BHUQFjAAegQIARAC&url=https%3A%2F%2Fwww.mysql.com%2F&usg=AOvVaw20c6IrMAtNC1A9NZPsDpWW)
 
 **The legal right to © 2020 Class A2,RUPP.**
+
+---
