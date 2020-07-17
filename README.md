@@ -9,7 +9,7 @@
 	- **MySQL**: It runs on loalhost:3306
 ## Setup Project
 * **Clone Repository**
-	- $ git clone https://github.com/mingtheanlay/library-management-system
+	- $ git clone https://github.com/mingtheanlay/library-management-system.git
 	- Run JFrame and JDK13 to launch the project
 # LEARN MORE
 You can learn more about:
