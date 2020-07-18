@@ -3,7 +3,7 @@
 # INSTALLATION
 ## Requirement 
 * **Java**: 
-	- **JFrame (J.Swing)**: The  component for support Architeture in Java. 
+	- **Java Swing (J.Swing)**: The  component for support Architeture in Java. 
     - **JDK13** : the development tool which it runs faster than JDK8
 * **Database**: 
 	- **MySQL**: It runs on loalhost:3306
