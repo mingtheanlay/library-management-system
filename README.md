@@ -10,7 +10,7 @@
 ## Setup Project
 * **Clone Repository**
 	- git clone https://github.com/mingtheanlay/library-management-system.git
-	- Run JFrame and JDK13 to launch the project
+	- Input JDK13 and mySQL driver through your IDE
 # LEARN MORE
 You can learn more about:
 - [JDK13](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjbxrjZlLjqAhVkyIsBHZ3FCD0QFjAAegQIBBAB&url=https%3A%2F%2Fwww.oracle.com%2Fjava%2Ftechnologies%2Fjavase-jdk13-downloads.html&usg=AOvVaw33zwEr0LQgTigqWxrIea4W).
