@@ -131,7 +131,7 @@ public class ViewLibrarianForm {
 		navPanel.add(btnAddLibrarian);
             
                 
-               	JLabel lblIssueBook = new JLabel("Issue Books");
+               	JLabel lblIssueBook = new JLabel("View Librarian");
 		lblIssueBook.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIssueBook.setFont(new Font("Roboto Condensed", Font.PLAIN, 32));
 		lblIssueBook.setBounds(367, 24, 208, 38);

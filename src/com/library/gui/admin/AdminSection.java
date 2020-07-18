@@ -138,14 +138,27 @@ public class AdminSection {
 		btnAddLibrarian.setBackground(new Color(106, 90, 205));
 		btnAddLibrarian.setBounds(-2, 152, 226, 45);
 		navPanel.add(btnAddLibrarian);
-		String html=new String("<html><body><h2>Welcome</h2></body></html>");
+		String html=new String("<html><body><h1>WELCOME</h1></body></html>Welcome");
 		JLabel lblNewLabel = new JLabel(html);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(322, 29, 267, 150);
 		adminFrame.getContentPane().add(lblNewLabel);
 		
+		String html1=new String("<html>"+ "<style> p {font-size : 12px; line-height: 4;} </style>"
+				+ "<body>"
+				+ "<p>Library Management System is a mini project "
+				+ "developed and customized by Students of Royal University Of Phnom Penh "
+				+ "(RUPP),Class A2, which we think it could help alot in someway for the"
+				+ " current system. We are looking forward to making "
+				+ "it more funtions and running smoothly."
+				+ "</p></body></html>");
+		JLabel lblNewLabel1 = new JLabel(html1);
+		lblNewLabel1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel1.setBounds(250, 60, 450, 300);
+		adminFrame.getContentPane().add(lblNewLabel1);
+		
 		JButton btn1=new JButton();
-		ImageIcon icon=new ImageIcon("/Users/chinyongchhe/Downloads/iconfinder_Github_1298743.png");
+		ImageIcon icon=new ImageIcon("/Users/chinyongchhe/Downloads/iconfinder__github_1156638.png");
 		Image img=icon.getImage();
 		Image imgScale=img.getScaledInstance(30,30, Image.SCALE_SMOOTH);
 		ImageIcon scaledIcon=new ImageIcon(imgScale);
