@@ -173,9 +173,25 @@ public class LibrarianSection {
 		btnLogout.setBounds(59, 406, 104, 45);
 		navPanel.add(btnLogout);
 		
-		JLabel lblNewLabel = new JLabel("Welcome");
-		lblNewLabel.setBounds(453, 73, 61, 16);
+		String html=new String("<html><body><h1>WELCOME</h1></body></html>Welcome");
+		JLabel lblNewLabel = new JLabel(html);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(322, 29, 267, 150);
 		librarianForm.getContentPane().add(lblNewLabel);
+		
+		String html1=new String("<html>"+ "<style> p {font-size : 12px; line-height: 4;} </style>"
+				+ "<body>"
+				+ "<p>Library Management System is a mini project "
+				+ "developed and customized by Students of Royal University Of Phnom Penh "
+				+ "(RUPP),Class A2, which we think it could help alot in someway for the"
+				+ " current system. We are looking forward to making "
+				+ "it more funtions and running smoothly."
+				+ "</p></body></html>");
+		JLabel lblNewLabel1 = new JLabel(html1);
+		lblNewLabel1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel1.setBounds(250, 60, 450, 300);
+		librarianForm.getContentPane().add(lblNewLabel1);
+
 	
 	}
 }
